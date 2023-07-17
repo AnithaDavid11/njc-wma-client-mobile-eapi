@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>21d18d8d-64d8-45bc-ba39-0e440c44c954</groupId>
+  <artifactId>njc-wma-client-papi</artifactId>
+  <version>1.0.3</version>
+  <name>njc-wma-client-papi</name>
+  <properties>
+    <classifier>raml</classifier>
+    <main>njc-wma-client-papi.raml</main>
+    <status>published</status>
+    <originalFormatVersion>1.0</originalFormatVersion>
+    <apiVersion>v1</apiVersion>
+    <projectId>88696ec9-5255-4593-88cb-521cb7c8b636</projectId>
+    <branchId>master</branchId>
+    <commitId>541db03fe0046dd103af6417e9dab42c5b0b8b3f</commitId>
+    <keywords/>
+    <type>rest-api</type>
+    <mainFile>njc-wma-client-papi.raml</mainFile>
+  </properties>
+  <repositories>
+    <repository>
+      <id>anypoint-exchange</id>
+      <url>https://maven.anypoint.mulesoft.com/api/v3/maven</url>
+    </repository>
+  </repositories>
+</project>

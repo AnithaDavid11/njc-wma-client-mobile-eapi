@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="clientDetailsFlow" doc:id="d542467f-c28f-4517-add5-49706d9b3929" >
+		<logger level="INFO" doc:name="Initial Logger" doc:id="81fe01f6-60ac-4b7b-bda7-f8b8b0b07e4b" message="Start Logger"/>
+		<http:request method="GET" doc:name="Request" doc:id="71751001-0179-4686-a2cf-db282d57d5a4" config-ref="client_HTTP_Request_configuration" path="/api/client/{id}">
+			<http:uri-params ><![CDATA[#[output application/java
+---
+{
+	"id" : attributes.uriParams.Id
+}]]]></http:uri-params>
+		</http:request>
+		<ee:transform doc:name="Transform Message" doc:id="360d1006-2e0a-44bb-9b6d-88412fea6d39" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="End Logger" doc:id="597fea13-d59b-4ba7-bcd4-7e0674a93635" message="End Logger"/>
+	</flow>
+	<flow name="clientSummary" doc:id="c287f5fd-6683-4e90-b075-fb648b1acf2a" >
+		<logger level="INFO" doc:name="Start Logger" doc:id="e52a7731-072a-47e5-89f6-a5409c739d90" message="Initial Logger" />
+		<set-variable value="#[attributes.uriParams.clientId]" doc:name="clientId" doc:id="df066b1f-6a35-4bbe-9217-a755182555a4" variableName="id" />
+		<http:request method="GET" doc:name="Request" doc:id="ac7e8d79-75c5-4296-a491-b6775e4f0ab6" config-ref="summary_HTTP_Request_configuration" path="/client/{clientId}">
+			<http:uri-params><![CDATA[#[output application/java
+---
+{
+	"clientId" : vars.id
+}]]]></http:uri-params>
+		</http:request>
+		<ee:transform doc:name="Transform Message" doc:id="9f1a7d71-ea54-4abd-ad67-78c3f055f201">
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="End Logger" doc:id="fe3141ae-060b-4016-8f4d-66cc175ff74e" message="Logger ends" />
+	</flow>
+	<flow name="accountHistory" doc:id="378783f0-c85a-4504-acaf-6784599f25fa" >
+		<logger level="INFO" doc:name="Start Logger" doc:id="6c13692c-5ec5-4a63-8b88-e6eb773796bc" message="Initial Logger" />
+		<http:request method="GET" doc:name="Request" doc:id="a24dc7b9-23a6-4ccb-924c-ef4a331489ff" path="/account/{id}/historical" config-ref="rdsSAPI_HTTP_Request_configuration">
+			<http:uri-params ><![CDATA[#[output application/java
+---
+{
+	"id" : attributes.uriParams.id
+}]]]></http:uri-params>
+			<http:query-params ><![CDATA[#[output application/java
+---
+{
+	"fromDate" : attributes.queryParams.fromDate
+}]]]></http:query-params>
+		</http:request>
+		<ee:transform doc:name="Transform Message" doc:id="958bf1e3-2e6c-46f4-89c0-684949458749" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="End Logger" doc:id="7d4dd1e2-0a7d-4df1-92e6-3d0125b474d5" message="Logger ends" />
+	</flow>
+
+</mule>

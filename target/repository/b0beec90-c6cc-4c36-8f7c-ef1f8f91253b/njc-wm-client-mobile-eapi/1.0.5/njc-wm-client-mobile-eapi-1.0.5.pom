@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>b0beec90-c6cc-4c36-8f7c-ef1f8f91253b</groupId>
+  <artifactId>njc-wm-client-mobile-eapi</artifactId>
+  <version>1.0.5</version>
+  <name>njc-wma-client-mobile-eapi</name>
+  <properties>
+    <classifier>raml</classifier>
+    <main>njc-wma-client-mobile-eapi.raml</main>
+    <status>published</status>
+    <originalFormatVersion>1.0</originalFormatVersion>
+    <apiVersion>v1</apiVersion>
+    <projectId>29ce53ec-c762-478c-a857-9dde69904781</projectId>
+    <branchId>master</branchId>
+    <commitId>720ae90ce587e4dd3540503660ff1b541c575e35</commitId>
+    <keywords/>
+    <type>rest-api</type>
+    <mainFile>njc-wma-client-mobile-eapi.raml</mainFile>
+  </properties>
+  <repositories>
+    <repository>
+      <id>anypoint-exchange</id>
+      <url>https://maven.anypoint.mulesoft.com/api/v3/maven</url>
+    </repository>
+  </repositories>
+</project>

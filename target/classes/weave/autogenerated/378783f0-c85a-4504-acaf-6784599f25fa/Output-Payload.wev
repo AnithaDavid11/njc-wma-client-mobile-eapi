@@ -1,0 +1,8 @@
+%dw 2.0
+
+type auto_378783f0_c85a_4504_acaf_6784599f25fa_Output_Payload = {
+  accountId: String, 
+  accountHistory: Array<{    fromDate: String,     assetCurrentValue: String,     _?: Any  }>, 
+  _?: Any
+}
+
